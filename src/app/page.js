@@ -20,8 +20,9 @@ export default function StkPush() {
       });
 
       if (response.status === 200) {
-        alert('STK push initiated successfully');
-      } else {
+        const { message } = response.data;
+        alert(message);
+        } else {
         alert('Failed to initiate STK push');
       }
     } catch (error) {
