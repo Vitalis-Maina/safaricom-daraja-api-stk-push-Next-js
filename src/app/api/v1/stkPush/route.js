@@ -6,9 +6,7 @@ import axios from 'axios';
 
 export async function POST(req) {
   const { phoneNumber, amount } =  await req.json();
-  console.log(phoneNumber,amount)
-  console.log(typeof(phoneNumber))
-  console.log(typeof(amount))
+ 
 
     // Validate the phoneNumber and amount
     if (!phoneNumber || !amount) {
