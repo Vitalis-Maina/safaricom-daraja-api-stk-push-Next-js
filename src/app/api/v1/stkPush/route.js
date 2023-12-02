@@ -63,7 +63,7 @@ export async function POST(req) {
       PartyA: formattedPhoneNumber,
       PartyB: shortcode,
       PhoneNumber: formattedPhoneNumber,
-      CallBackURL: `${process.env.DOMAIN}/api/path/`,
+      CallBackURL: `${process.env.DOMAIN}/api/v1/path/`,
       AccountReference: process.env.MPESA_INITIATOR_NAME,
       TransactionDesc: 'Payment of Units'
     }
