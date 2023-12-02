@@ -9,8 +9,7 @@ export default function StkPush() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
+  
     if (typeof phoneNumber !== 'string' || !/^(0|\+?254|254)\d{9}$/.test(phoneNumber)) {
       return alert('Invalid phoneNumber.' );
     }
@@ -21,17 +20,24 @@ export default function StkPush() {
     if (amountNumber <= 0) {
       return alert('Amount must be greater than 0.' );
     }
+  
     try {
-      setLoading(true);
+     
 
+      setLoading(true);
+  
       const response = await axios.post('/api/v1/stkPush/', {
         phoneNumber,
         amount: amountNumber,
       });
+      alert('STK push initiated successfully')
 
+  
       if (response.status === 200) {
         const { message } = response.data;
         alert(message);
+      } else if (response.data.status === 'insufficient' || response.data.status === 'invalid' || response.data.status === 'timeout' || response.data.status === 'limit') {
+        alert(response.data.message);
       } else {
         alert('Failed to initiate STK push');
       }
@@ -42,6 +48,7 @@ export default function StkPush() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'goldenrod' }}>
