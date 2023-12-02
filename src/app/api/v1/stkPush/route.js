@@ -54,7 +54,7 @@ export async function POST(req) {
     PartyA: formattedPhoneNumber,
     PartyB: shortcode,
     PhoneNumber: formattedPhoneNumber,
-    CallBackURL: "https://intimate-barnacle-reasonably.ngrok-free.app",
+    CallBackURL: `${process.env.DOMAIN}/api/path/`,
     AccountReference: process.env.MPESA_INITIATOR_NAME,
     TransactionDesc: 'testing ',
   };
