@@ -54,7 +54,7 @@ export async function POST(req) {
     PartyA: formattedPhoneNumber,
     PartyB: shortcode,
     PhoneNumber: formattedPhoneNumber,
-    CallBackURL: `${process.env.DOMAIN}/api/path/`,
+     CallBackURL: `${process.env.DOMAIN}/api/path/`,
     AccountReference: process.env.MPESA_INITIATOR_NAME,
     TransactionDesc: 'testing ',
   };
@@ -67,9 +67,8 @@ export async function POST(req) {
     }
   })
 
-  const stkPushData = stkPushResponse.data;
 
-  console.log('STK Push initiated successfully', stkPushData);
+  console.log('STK Push initiated successfully', stkPushResponse);
 
   
     return NextResponse.json({ message: 'STK push initiated successfully' });
