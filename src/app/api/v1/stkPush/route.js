@@ -8,16 +8,6 @@ export async function POST(req) {
   const { phoneNumber, amount } =  await req.json();
  
 
-    // Validate the phoneNumber and amount
-    if (!phoneNumber || !amount) {
-        return NextResponse.json({ error: 'Missing phoneNumber or amount.' })
-      }
-      if (typeof phoneNumber !== 'string' || !/^(0|\+?254|254)\d{9}$/.test(phoneNumber)) {
-        return NextResponse.json({ error: 'Invalid phoneNumber.' })
-      }
-      if (typeof amount !== 'number' || amount <= 0) {
-        return NextResponse.json({ error: 'Invalid amount.' })
-      }
       console.log('number provided:', phoneNumber)
       const formattedPhoneNumber = phoneNumber.replace(/^(0|\+?254)/, '254')
 
