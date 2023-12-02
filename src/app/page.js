@@ -26,11 +26,12 @@ export default function StkPush() {
 
       setLoading(true);
   
+      alert('STK push initiated successfully')
+
       const response = await axios.post('/api/v1/stkPush/', {
         phoneNumber,
         amount: amountNumber,
       });
-      alert('STK push initiated successfully')
 
   
       if (response.status === 200) {
