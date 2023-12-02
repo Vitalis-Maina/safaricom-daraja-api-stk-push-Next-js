@@ -9,8 +9,18 @@ export default function StkPush() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const amountNumber = Number(amount);
 
+
+    if (typeof phoneNumber !== 'string' || !/^(0|\+?254|254)\d{9}$/.test(phoneNumber)) {
+      return alert('Invalid phoneNumber.' );
+    }
+    const amountNumber = Number(amount);
+    if (isNaN(amountNumber)) {
+      return alert('Amount must be a number.' );
+    }
+    if (amountNumber <= 0) {
+      return alert('Amount must be greater than 0.' );
+    }
     try {
       setLoading(true);
 
@@ -22,7 +32,7 @@ export default function StkPush() {
       if (response.status === 200) {
         const { message } = response.data;
         alert(message);
-        } else {
+      } else {
         alert('Failed to initiate STK push');
       }
     } catch (error) {
