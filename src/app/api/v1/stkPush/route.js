@@ -36,19 +36,9 @@ export async function POST(req) {
       }
     })
 
-    // Get the current date and time
-    const now = new Date()
-
-    // Extract date and time components
-    const year = now.getFullYear()
-    const month = String(now.getMonth() + 1).padStart(2, '0') // months are 0-indexed in JavaScript
-    const day = String(now.getDate()).padStart(2, '0')
-    const hours = String(now.getHours()).padStart(2, '0')
-    const minutes = String(now.getMinutes()).padStart(2, '0')
-    const seconds = String(now.getSeconds()).padStart(2, '0')
-
-    // Combine components into a timestamp string
-    const timestamp = `${year}${month}${day}${hours}${minutes}${seconds}`
+    const now = new Date();
+const timestamp = now.toISOString().replace(/[^0-9]/g, '').slice(0,14);
+    
 
     // Generate the password by concatenating shortcode, passkey and timestamp, then encoding it in base64
     const password = Buffer.from(`${shortcode}${process.env.MPESA_PASSKEY}${timestamp}`).toString('base64')
